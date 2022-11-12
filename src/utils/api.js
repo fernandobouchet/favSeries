@@ -1,16 +1,18 @@
 import axios from "axios";
 
-const getBand = async () => {
+const getSeries = async () => {
   try {
     const data = await axios.get(
-      "https://api.themoviedb.org/3/tv/popular?api_key=af600b375b4395a206a3064ab66e7868&language=es-AR&page=1"
+      `https://api.themoviedb.org/3/discover/tv?api_key=${
+        import.meta.env.VITE_APP_API_KEY
+      }&language=es-AR&sort_by=popularity.desc&vote_count.gte=1400&watch_region=AR&page=1&with_watch_providers=8|119|384&without_genres=10762&first_air_date.gte=2000-01-01`
     );
     if (data.status === 200) {
-      return data;
+      return data.data.results;
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-export { getBand };
+export { getSeries };
