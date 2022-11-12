@@ -15,4 +15,19 @@ const getSeries = async () => {
   }
 };
 
-export { getSeries };
+const getSerie = async (id) => {
+  try {
+    const data = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${
+        import.meta.env.VITE_APP_API_KEY
+      }&language=es-AR`
+    );
+    if (data.status === 200) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getSeries, getSerie };
