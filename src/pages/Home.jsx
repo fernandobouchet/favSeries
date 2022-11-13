@@ -6,6 +6,7 @@ const Home = ({ data, setPage }) => {
   const handlePageChange = (e) => {
     setPage(e.selected + 1);
   };
+
   return (
     <Container maxWidth={"1024px"}>
       <SimpleGrid columns={[2, null, 3, 4]} spacing="10px">
@@ -20,7 +21,7 @@ const Home = ({ data, setPage }) => {
         display={"flex"}
         justifyContent="center"
         alignItems={"center"}
-        h={"3rem"}
+        h={"7rem"}
         fontSize={"larger"}
       >
         <ReactPaginate
