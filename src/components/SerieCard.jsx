@@ -12,7 +12,7 @@ const SerieCard = ({ data }) => {
       <Box
         data-group
         as={Link}
-        to={`serie/${id}`}
+        to={`/serie/${id}`}
         border="0.01px solid var(--chakra-colors-whiteAlpha-300)"
         borderRadius="lg"
         overflow="hidden"

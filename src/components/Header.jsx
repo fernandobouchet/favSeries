@@ -2,7 +2,9 @@ import { Container, Heading } from "@chakra-ui/react";
 import { MdBookmark, MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ misSeries }) => {
+  const { favoritas, verMasTarde } = misSeries;
+
   return (
     <Container maxWidth={"1024px"}>
       <header>
@@ -12,17 +14,17 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a className="nav-link" href="">
+              <Link to="/favoritas">
                 <MdFavorite />
-                Favoritas
-              </a>
+                Favoritas - {favoritas.length}
+              </Link>
             </li>
             |
             <li>
-              <a href="">
+              <Link to="/ver-mas-tarde">
                 <MdBookmark />
-                Ver más tarde
-              </a>
+                Ver más tarde - {verMasTarde.length}
+              </Link>
             </li>
           </ul>
         </nav>

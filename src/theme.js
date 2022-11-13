@@ -20,6 +20,7 @@ const styles = {
       display: "flex",
       gap: "1rem",
       justifyContent: "center",
+      margin: "1rem 0",
     },
     "li.selected": {
       border: "1px solid",

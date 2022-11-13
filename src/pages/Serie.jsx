@@ -9,7 +9,7 @@ import {
 import { getSerie } from "../utils/api";
 import { Image, Flex, Text, Center, Stack, Button } from "@chakra-ui/react";
 
-const Serie = () => {
+const Serie = ({ misSeries, setmisSeries }) => {
   const { id } = useParams();
 
   const [serieData, setSerieData] = useState();
@@ -75,6 +75,12 @@ const Serie = () => {
                     leftIcon={<MdFavoriteBorder />}
                     colorScheme="gray"
                     variant="outline"
+                    onClick={() =>
+                      setmisSeries((prevState) => ({
+                        ...prevState,
+                        favoritas: [...prevState.favoritas, serieData],
+                      }))
+                    }
                   >
                     Agregar a favoritos
                   </Button>
@@ -82,6 +88,12 @@ const Serie = () => {
                     leftIcon={<MdBookmarkBorder />}
                     colorScheme="gray"
                     variant="outline"
+                    onClick={() =>
+                      setmisSeries((prevState) => ({
+                        ...prevState,
+                        verMasTarde: [...prevState.verMasTarde, serieData],
+                      }))
+                    }
                   >
                     Agregar a ver más tarde
                   </Button>
