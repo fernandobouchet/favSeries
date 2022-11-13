@@ -7,16 +7,17 @@ import { getSeries } from "./utils/api";
 
 function App() {
   const [data, setData] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getSeries().then((result) => setData(result));
-  }, []);
+    getSeries(page).then((result) => setData(result));
+  }, [page]);
 
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home data={data} />} />
+        <Route path="/" element={<Home data={data} setPage={setPage} />} />
         <Route path="/serie/:id" element={<Serie />} />
       </Routes>
     </>

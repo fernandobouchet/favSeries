@@ -12,6 +12,10 @@ const styles = {
       bg: "rgba(0, 0, 0, 0.10)",
     },
     ul: { listStyle: "none", display: "flex", gap: "1rem" },
+    "li.selected": {
+      border: "1px solid",
+      padding: "0 1rem",
+    },
   },
 };
 
