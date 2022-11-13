@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
-import { AspectRatio, Box, Image } from "@chakra-ui/react";
+import { AspectRatio, Box, Image, Text } from "@chakra-ui/react";
 
 const SerieCard = ({ data }) => {
-  const { name, id, poster_path } = data;
+  const { name, first_air_date, id, poster_path } = data;
 
   return (
     <>
       <Box
+        data-group
         as={Link}
         to={`serie/${id}`}
+        border="0.01px solid var(--chakra-colors-whiteAlpha-300)"
         borderRadius="lg"
         overflow="hidden"
         h={"100%"}
@@ -16,9 +18,11 @@ const SerieCard = ({ data }) => {
         _hover={{
           filter: "auto",
           blur: "2px",
-          brightness: "20%",
+          brightness: "40%",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
           cursor: "pointer",
         }}
+        display="block"
       >
         <AspectRatio maxW="400px" ratio={2 / 3}>
           <Image
@@ -28,15 +32,12 @@ const SerieCard = ({ data }) => {
           />
         </AspectRatio>
         <Box p="2">
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h2"
-            lineHeight="tight"
-            noOfLines={1}
-          >
+          <Text fontWeight="semibold" as="h2" lineHeight="tight" noOfLines={1}>
             {name}
-          </Box>
+          </Text>
+          <Text as="sub" color={"whiteAlpha.700"}>
+            {new Date(first_air_date).getFullYear()}
+          </Text>
         </Box>
       </Box>
     </>
