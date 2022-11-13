@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSerie } from "../utils/api";
-import { Container, Box, Image, Flex, Text, Center } from "@chakra-ui/react";
+import { Image, Flex, Text, Center } from "@chakra-ui/react";
 
 const Serie = () => {
   const { id } = useParams();
@@ -51,14 +51,9 @@ const Serie = () => {
                 p="4"
                 color={"whiteAlpha.900"}
               >
-                <Text
-                  mt="1"
-                  fontWeight="semibold"
-                  as="h2"
-                  lineHeight="tight"
-                  noOfLines={1}
-                >
-                  {serieData.name}
+                <Text mt="1" fontWeight="semibold" as="h2" lineHeight="tight">
+                  {serieData.name} - (
+                  {new Date(serieData.first_air_date).getFullYear()})
                 </Text>
                 <Text as="cite" mt="1">
                   {serieData.tagline}
