@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {
+  MdBookmarkBorder,
+  MdBookmark,
+  MdFavoriteBorder,
+  MdFavorite,
+} from "react-icons/md";
 import { getSerie } from "../utils/api";
-import { Image, Flex, Text, Center } from "@chakra-ui/react";
+import { Image, Flex, Text, Center, Stack, Button } from "@chakra-ui/react";
 
 const Serie = () => {
   const { id } = useParams();
 
   const [serieData, setSerieData] = useState();
-  console.log(serieData);
 
   useEffect(() => {
     getSerie(id).then((result) => setSerieData(result));
@@ -21,7 +26,7 @@ const Serie = () => {
         >
           <Flex
             alignItems={"center"}
-            height={"calc(100vh - 91px)"}
+            height={"calc(100vh - 7rem)"}
             backdropFilter="auto"
             backdropBlur="2px"
             backdropBrightness="60%"
@@ -51,16 +56,36 @@ const Serie = () => {
                 p="4"
                 color={"whiteAlpha.900"}
               >
-                <Text mt="1" fontWeight="semibold" as="h2" lineHeight="tight">
+                <Text mt="2" fontWeight="semibold" as="h2" lineHeight="tight">
                   {serieData.name} - (
                   {new Date(serieData.first_air_date).getFullYear()})
                 </Text>
-                <Text as="cite" mt="1">
+                <Text as="cite" mt="2">
                   {serieData.tagline}
                 </Text>
-                <Text mt="1" as="p">
+                <Text mt="2" as="p">
                   {serieData.overview}
                 </Text>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  spacing={4}
+                  mt="3rem"
+                >
+                  <Button
+                    leftIcon={<MdFavoriteBorder />}
+                    colorScheme="gray"
+                    variant="outline"
+                  >
+                    Agregar a favoritos
+                  </Button>
+                  <Button
+                    leftIcon={<MdBookmarkBorder />}
+                    colorScheme="gray"
+                    variant="outline"
+                  >
+                    Agregar a ver más tarde
+                  </Button>
+                </Stack>
               </Flex>
             </Flex>
           </Flex>

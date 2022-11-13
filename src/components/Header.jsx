@@ -1,4 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
+import { MdBookmark, MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -11,10 +12,17 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="">Favoritas</a>
+              <a className="nav-link" href="">
+                <MdFavorite />
+                Favoritas
+              </a>
             </li>
+            |
             <li>
-              <a href="">Ver más tarde</a>
+              <a href="">
+                <MdBookmark />
+                Ver más tarde
+              </a>
             </li>
           </ul>
         </nav>
