@@ -18,6 +18,33 @@ const Serie = ({ misSeries, setmisSeries }) => {
     getSerie(id).then((result) => setSerieData(result));
   }, []);
 
+  const handleAddSerie = (e) => {
+    if (serieYaAgregada(e.target.name, serieData)) {
+      return;
+    }
+    setmisSeries((prevState) => ({
+      ...prevState,
+      [e.target.name]: [...prevState[e.target.name], serieData],
+    }));
+  };
+
+  const handleRemoveSerie = (e) => {
+    setmisSeries((prevState) => ({
+      ...prevState,
+      [e.target.name]: [
+        ...prevState[e.target.name].filter(
+          (serie) => serie.id !== serieData.id
+        ),
+      ],
+    }));
+  };
+
+  const serieYaAgregada = (target, data) => {
+    if (misSeries[target].find((serie) => serie.id === data.id)) {
+      return true;
+    }
+  };
+
   return (
     <>
       {serieData && (
@@ -75,27 +102,31 @@ const Serie = ({ misSeries, setmisSeries }) => {
                     leftIcon={<MdFavoriteBorder />}
                     colorScheme="gray"
                     variant="outline"
-                    onClick={() =>
-                      setmisSeries((prevState) => ({
-                        ...prevState,
-                        favoritas: [...prevState.favoritas, serieData],
-                      }))
+                    name="favoritas"
+                    onClick={
+                      !serieYaAgregada("favoritas", serieData)
+                        ? (e) => handleAddSerie(e)
+                        : (e) => handleRemoveSerie(e)
                     }
                   >
-                    Agregar a favoritos
+                    {!serieYaAgregada("favoritas", serieData)
+                      ? "Agregar a favoritos"
+                      : "Eliminar de favoritos"}
                   </Button>
                   <Button
                     leftIcon={<MdBookmarkBorder />}
                     colorScheme="gray"
                     variant="outline"
-                    onClick={() =>
-                      setmisSeries((prevState) => ({
-                        ...prevState,
-                        verMasTarde: [...prevState.verMasTarde, serieData],
-                      }))
+                    name="verMasTarde"
+                    onClick={
+                      !serieYaAgregada("verMasTarde", serieData)
+                        ? (e) => handleAddSerie(e)
+                        : (e) => handleRemoveSerie(e)
                     }
                   >
-                    Agregar a ver más tarde
+                    {!serieYaAgregada("verMasTarde", serieData)
+                      ? "Agregar a ver más tarde"
+                      : "Eliminar de ver más tarde"}
                   </Button>
                 </Stack>
               </Flex>
