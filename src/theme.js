@@ -1,9 +1,18 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, keyframes } from "@chakra-ui/react";
 
 const config = {
   useSystemColorMode: false,
   initialColorMode: "dark",
 };
+
+const fadeIn = keyframes`
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+`;
 
 const styles = {
   global: {
@@ -32,6 +41,11 @@ const styles = {
         alignItems: "center",
         gap: "0.5rem",
       },
+    },
+    ".animation": {
+      animationName: `${fadeIn}`,
+      animationTimingFunction: "ease-in",
+      animationDuration: "1s",
     },
   },
 };
