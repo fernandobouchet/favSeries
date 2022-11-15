@@ -16,7 +16,7 @@ const Header = ({ misSeries }) => {
             <li>
               <Link to="/favoritas">
                 <MdFavorite />
-                Favoritas - {favoritas.length}
+                Favoritos - {favoritas.length}
               </Link>
             </li>
             |

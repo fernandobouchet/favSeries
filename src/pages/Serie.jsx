@@ -99,7 +99,13 @@ const Serie = ({ misSeries, setmisSeries }) => {
                   mt="3rem"
                 >
                   <Button
-                    leftIcon={<MdFavoriteBorder />}
+                    leftIcon={
+                      !serieYaAgregada("favoritas", serieData) ? (
+                        <MdFavoriteBorder />
+                      ) : (
+                        <MdFavorite />
+                      )
+                    }
                     colorScheme="gray"
                     variant="outline"
                     name="favoritas"
@@ -114,7 +120,13 @@ const Serie = ({ misSeries, setmisSeries }) => {
                       : "Eliminar de favoritos"}
                   </Button>
                   <Button
-                    leftIcon={<MdBookmarkBorder />}
+                    leftIcon={
+                      !serieYaAgregada("verMasTarde", serieData) ? (
+                        <MdBookmarkBorder />
+                      ) : (
+                        <MdBookmark />
+                      )
+                    }
                     colorScheme="gray"
                     variant="outline"
                     name="verMasTarde"
