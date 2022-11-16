@@ -14,6 +14,7 @@ import {
   Center,
   Stack,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 
 const Serie = ({ misSeries, setmisSeries }) => {
@@ -22,9 +23,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
   const [serieData, setSerieData] = useState();
   const [isLoaded, setIsLoaded] = useState(0);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const toast = useToast();
 
   useEffect(() => {
     getSerie(id).then((result) => setSerieData(result));
@@ -51,6 +50,12 @@ const Serie = ({ misSeries, setmisSeries }) => {
       ...prevState,
       [e.target.name]: [...prevState[e.target.name], serieData],
     }));
+    toast({
+      title: `Serie añadida a ${e.target.title}`,
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
   };
 
   const handleRemoveSerie = (e) => {
@@ -62,6 +67,12 @@ const Serie = ({ misSeries, setmisSeries }) => {
         ),
       ],
     }));
+    toast({
+      title: `Serie eliminada de ${e.target.title}`,
+      status: "info",
+      duration: 1000,
+      isClosable: true,
+    });
   };
 
   const serieYaAgregada = (target, data) => {
@@ -136,6 +147,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
                     colorScheme="gray"
                     variant="outline"
                     name="favoritas"
+                    title="favoritas"
                     onClick={
                       !serieYaAgregada("favoritas", serieData)
                         ? (e) => handleAddSerie(e)
@@ -157,6 +169,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
                     colorScheme="gray"
                     variant="outline"
                     name="verMasTarde"
+                    title="ver más tarde"
                     onClick={
                       !serieYaAgregada("verMasTarde", serieData)
                         ? (e) => handleAddSerie(e)

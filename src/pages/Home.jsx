@@ -8,10 +8,6 @@ const Home = ({ data, setPage }) => {
     setPage(e.selected + 1);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Container maxWidth={"1024px"} minHeight={"100vh"}>
       {data && <Grid data={data.results} />}
