@@ -68,14 +68,15 @@ const Serie = ({ misSeries, setmisSeries }) => {
 
   return (
     <>
-      {isLoaded >= 2 && (
+      {isLoaded >= 2 ? (
         <Center
+          mt={6}
           className="animation"
           background={`linear-gradient(to top, black, transparent),url(https://image.tmdb.org/t/p/original/${serieData.backdrop_path}) center center/cover no-repeat`}
         >
           <Flex
+            height={"100vh"}
             alignItems={"center"}
-            height={"calc(100vh - 7rem)"}
             backdropFilter="auto"
             backdropBlur="2px"
             backdropBrightness="60%"
@@ -167,6 +168,8 @@ const Serie = ({ misSeries, setmisSeries }) => {
             </Flex>
           </Flex>
         </Center>
+      ) : (
+        <Center minHeight={"100vh"}></Center>
       )}
     </>
   );

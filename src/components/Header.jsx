@@ -1,4 +1,4 @@
-import { Container, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { MdBookmark, MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -6,10 +6,10 @@ const Header = ({ misSeries }) => {
   const { favoritas, verMasTarde } = misSeries;
 
   return (
-    <Container maxWidth={"1024px"}>
+    <Box bg={"rgba(0, 0, 0, 0.10)"}>
       <header>
         <Heading as={Link} to="/">
-          Series
+          TOP Series
         </Heading>
         <nav>
           <ul>
@@ -29,7 +29,7 @@ const Header = ({ misSeries }) => {
           </ul>
         </nav>
       </header>
-    </Container>
+    </Box>
   );
 };
 export default Header;

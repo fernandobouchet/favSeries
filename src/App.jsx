@@ -10,6 +10,7 @@ import {
   restoreSeriesFromLocalStorage,
   saveSeries,
 } from "./utils/localStorage";
+import Footer from "./components/Footer";
 
 function App() {
   const [data, setData] = useState(null);
@@ -42,6 +43,7 @@ function App() {
           element={<VerMasTarde data={misSeries.verMasTarde} />}
         />
       </Routes>
+      <Footer />
     </>
   );
 }

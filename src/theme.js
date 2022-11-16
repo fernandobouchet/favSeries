@@ -19,10 +19,13 @@ const styles = {
     body: {
       color: "whiteAlpha.900",
       bg: "rgba(0, 0, 0, 0.10)",
+      height: "100%",
     },
     header: {
       height: "7rem",
       padding: "1rem",
+      maxWidth: "1024px",
+      margin: "auto",
     },
     ul: {
       listStyle: "none",

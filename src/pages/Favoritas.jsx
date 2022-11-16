@@ -3,7 +3,7 @@ import SerieCard from "../components/SerieCard";
 
 const Favoritas = ({ data }) => {
   return (
-    <Container maxWidth={"1024px"}>
+    <Container maxWidth={"1024px"} minHeight={"100vh"}>
       <SimpleGrid columns={[2, null, 3, 4]} spacing="10px">
         {data.length > 0 &&
           data.map((serie) => (

@@ -8,8 +8,8 @@ const Home = ({ data, setPage }) => {
   };
 
   return (
-    <Container maxWidth={"1024px"}>
-      <SimpleGrid columns={[2, null, 3, 4]} spacing="10px">
+    <Container maxWidth={"1024px"} minHeight={"100vh"}>
+      <SimpleGrid columns={[2, null, 3, 4]} spacing="10px" p={"1rem 0"}>
         {data &&
           data.results.map((serie) => (
             <Box maxW="13rem" p={"0.5rem"} key={serie.id}>
@@ -21,7 +21,7 @@ const Home = ({ data, setPage }) => {
         display={"flex"}
         justifyContent="center"
         alignItems={"center"}
-        h={"7rem"}
+        h={"3rem"}
         fontSize={"larger"}
       >
         <ReactPaginate
