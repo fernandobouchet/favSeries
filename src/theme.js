@@ -22,7 +22,9 @@ const styles = {
       height: "100%",
     },
     header: {
-      height: "7rem",
+      display: "flex",
+      gap: "0.5rem",
+      flexDirection: "column",
       padding: "1rem",
       maxWidth: "1024px",
       margin: "auto",
