@@ -1,6 +1,6 @@
-import { SimpleGrid, Box, Container } from "@chakra-ui/react";
-import SerieCard from "../components/SerieCard";
+import { Box, Container } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
+import Grid from "../components/Grid";
 
 const Home = ({ data, setPage }) => {
   const handlePageChange = (e) => {
@@ -9,14 +9,7 @@ const Home = ({ data, setPage }) => {
 
   return (
     <Container maxWidth={"1024px"} minHeight={"100vh"}>
-      <SimpleGrid columns={[2, null, 3, 4]} spacing="10px" p={"1rem 0"}>
-        {data &&
-          data.results.map((serie) => (
-            <Box maxW="13rem" p={"0.5rem"} key={serie.id}>
-              <SerieCard data={serie} />
-            </Box>
-          ))}
-      </SimpleGrid>
+      {data && <Grid data={data.results} />}
       <Box
         display={"flex"}
         justifyContent="center"

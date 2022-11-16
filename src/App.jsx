@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import Serie from "./pages/Serie";
 import Home from "./pages/Home";
 import { getSeries } from "./utils/api";
-import Favoritas from "./pages/Favoritas";
-import VerMasTarde from "./pages/VerMasTarde";
+import MisSeries from "./pages/MisSeries";
 import {
   restoreSeriesFromLocalStorage,
   saveSeries,
@@ -36,11 +35,11 @@ function App() {
         />
         <Route
           path="/favoritas"
-          element={<Favoritas data={misSeries.favoritas} />}
+          element={<MisSeries data={misSeries.favoritas} />}
         />
         <Route
           path="/ver-mas-tarde"
-          element={<VerMasTarde data={misSeries.verMasTarde} />}
+          element={<MisSeries data={misSeries.verMasTarde} />}
         />
       </Routes>
       <Footer />
