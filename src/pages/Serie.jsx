@@ -23,6 +23,10 @@ const Serie = ({ misSeries, setmisSeries }) => {
   const [isLoaded, setIsLoaded] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     getSerie(id).then((result) => setSerieData(result));
   }, []);
 

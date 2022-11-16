@@ -1,11 +1,16 @@
 import { Box, Container } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import Grid from "../components/Grid";
+import { useEffect } from "react";
 
 const Home = ({ data, setPage }) => {
   const handlePageChange = (e) => {
     setPage(e.selected + 1);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Container maxWidth={"1024px"} minHeight={"100vh"}>
