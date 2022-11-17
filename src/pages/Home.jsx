@@ -1,7 +1,6 @@
 import { Box, Container } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import Grid from "../components/Grid";
-import { useEffect } from "react";
 
 const Home = ({ data, setPage }) => {
   const handlePageChange = (e) => {
@@ -19,6 +18,7 @@ const Home = ({ data, setPage }) => {
         fontSize={{ base: "md", md: "lg" }}
       >
         <ReactPaginate
+          value={1}
           breakLabel="..."
           nextLabel=">"
           onPageChange={(e) => handlePageChange(e)}
