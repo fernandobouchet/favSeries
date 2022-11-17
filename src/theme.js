@@ -37,10 +37,15 @@ const styles = {
       margin: "1rem 0",
     },
     "li.selected": {
-      border: "1px solid",
-      padding: "0 1rem",
+      background: "var(--chakra-colors-whiteAlpha-900)",
+      color: "var(--chakra-colors-gray-900)",
     },
     li: {
+      borderColor: "var(--chakra-colors-whiteAlpha-300)",
+      color: "var(--chakra-colors-whiteAlpha-900)",
+      padding: "0.1rem 0.6rem",
+      fontWeight: "bold",
+      borderRadius: "5rem",
       a: {
         display: "flex",
         alignItems: "center",

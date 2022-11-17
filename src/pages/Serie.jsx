@@ -51,10 +51,9 @@ const Serie = ({ misSeries, setmisSeries }) => {
       [e.target.name]: [...prevState[e.target.name], serieData],
     }));
     toast({
-      title: `Serie añadida a ${e.target.title}`,
+      title: `Serie agregada a ${e.target.title}`,
       status: "success",
       duration: 1000,
-      isClosable: true,
     });
   };
 
@@ -71,7 +70,6 @@ const Serie = ({ misSeries, setmisSeries }) => {
       title: `Serie eliminada de ${e.target.title}`,
       status: "info",
       duration: 1000,
-      isClosable: true,
     });
   };
 
@@ -88,6 +86,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
           mt={6}
           className="animation"
           background={`linear-gradient(to top, black, transparent),url(https://image.tmdb.org/t/p/original/${serieData.backdrop_path}) center center/cover no-repeat`}
+          fontSize={{ base: "md", md: "lg" }}
         >
           <Flex
             height={"100vh"}
@@ -101,7 +100,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
             <Flex
               bgColor={"rgba(0, 0, 0, 0.8)"}
               border={"1px transparent"}
-              borderRadius="lg"
+              borderRadius={{ base: "0", xl: "lg" }}
               justifyContent="center"
               direction={{ base: "column", sm: "row" }}
               maxW="1024px"
@@ -135,8 +134,10 @@ const Serie = ({ misSeries, setmisSeries }) => {
                   direction={{ base: "column", sm: "row" }}
                   spacing={4}
                   mt="3rem"
+                  fontSize={{ base: "md", md: "lg" }}
                 >
                   <Button
+                    fontSize={{ base: "md", md: "lg" }}
                     leftIcon={
                       !serieYaAgregada("favoritas", serieData) ? (
                         <MdFavoriteBorder />
@@ -147,7 +148,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
                     colorScheme="gray"
                     variant="outline"
                     name="favoritas"
-                    title="favoritas"
+                    title="favoritos"
                     onClick={
                       !serieYaAgregada("favoritas", serieData)
                         ? (e) => handleAddSerie(e)
@@ -159,6 +160,7 @@ const Serie = ({ misSeries, setmisSeries }) => {
                       : "Eliminar de favoritos"}
                   </Button>
                   <Button
+                    fontSize={{ base: "md", md: "lg" }}
                     leftIcon={
                       !serieYaAgregada("verMasTarde", serieData) ? (
                         <MdBookmarkBorder />

@@ -6,12 +6,21 @@ const Header = ({ misSeries }) => {
   const { favoritas, verMasTarde } = misSeries;
 
   return (
-    <Box bg={"rgba(0, 0, 0, 0.10)"} height={{ base: "9rem", sm: "10rem" }}>
+    <Box
+      bg={"rgba(0, 0, 0, 0.10)"}
+      height={{ base: "8rem", sm: "9rem" }}
+      pt={{ base: "2", md: "4" }}
+    >
       <header>
-        <Heading as={Link} to="/" size="2xl" lineHeight="tall">
+        <Heading
+          as={Link}
+          to="/"
+          size={{ base: "xl", md: "2xl" }}
+          lineHeight="tall"
+        >
           <Highlight
             query="TOP"
-            styles={{ px: "2", py: "1", rounded: "full", bg: "teal.200" }}
+            styles={{ px: "2", py: "2", rounded: "full", bg: "teal.200" }}
           >
             TOP Series
           </Highlight>
@@ -25,6 +34,7 @@ const Header = ({ misSeries }) => {
               variant="outline"
               border={"none"}
               gap={2}
+              fontSize={{ base: "md", md: "xl" }}
             >
               <MdFavorite />
               Favoritos<Badge>{favoritas.length}</Badge>
@@ -36,6 +46,7 @@ const Header = ({ misSeries }) => {
               variant="outline"
               border={"none"}
               gap={2}
+              fontSize={{ base: "md", md: "xl" }}
             >
               <MdBookmark />
               Ver más tarde<Badge>{verMasTarde.length}</Badge>

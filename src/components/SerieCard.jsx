@@ -54,7 +54,7 @@ const SerieCard = ({ data }) => {
               />
             </Skeleton>
           </AspectRatio>
-          <Box p="2">
+          <Box p="2" fontSize={{ base: "md", md: "lg" }}>
             <Text
               fontWeight="semibold"
               as="h2"

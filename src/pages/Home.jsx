@@ -16,7 +16,7 @@ const Home = ({ data, setPage }) => {
         justifyContent="center"
         alignItems={"center"}
         h={"3rem"}
-        fontSize={"larger"}
+        fontSize={{ base: "md", md: "lg" }}
       >
         <ReactPaginate
           breakLabel="..."
@@ -25,6 +25,8 @@ const Home = ({ data, setPage }) => {
           pageCount={data ? data.total_pages - 1 : 0}
           previousLabel="<"
           renderOnZeroPageCount={null}
+          pageRangeDisplayed={1}
+          marginPagesDisplayed={1}
         />
       </Box>
     </Container>

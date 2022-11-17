@@ -3,7 +3,11 @@ import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <Box bg={"rgba(0, 0, 0, 0.10)"} mt="2rem">
+    <Box
+      bg={"rgba(0, 0, 0, 0.10)"}
+      mt="2rem"
+      fontSize={{ base: "sm", md: "md" }}
+    >
       <Container
         maxWidth={"1024px"}
         display={"flex"}
