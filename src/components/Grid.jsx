@@ -1,4 +1,4 @@
-import { SimpleGrid, Box, Center } from "@chakra-ui/react";
+import { SimpleGrid, Box } from "@chakra-ui/react";
 import SerieCard from "../components/SerieCard";
 
 const Grid = ({ data }) => {

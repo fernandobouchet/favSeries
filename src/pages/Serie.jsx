@@ -1,29 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  MdBookmarkBorder,
-  MdBookmark,
-  MdFavoriteBorder,
-  MdFavorite,
-} from "react-icons/md";
 import { getSerie } from "../utils/api";
-import {
-  Image as ChakraImage,
-  Flex,
-  Text,
-  Center,
-  Stack,
-  Button,
-  useToast,
-} from "@chakra-ui/react";
+import { Image as ChakraImage, Flex, Text, Center } from "@chakra-ui/react";
+import SerieButtons from "../components/SerieButtons";
 
 const Serie = ({ misSeries, setmisSeries }) => {
   const { id } = useParams();
 
   const [serieData, setSerieData] = useState();
   const [isLoaded, setIsLoaded] = useState(0);
-
-  const toast = useToast();
 
   useEffect(() => {
     getSerie(id).then((result) => setSerieData(result));
@@ -41,43 +26,6 @@ const Serie = ({ misSeries, setmisSeries }) => {
       `https://image.tmdb.org/t/p/original/${serieData.poster_path}`;
     image2.onload = () => setIsLoaded((prevState) => prevState + 1);
   }, [serieData]);
-
-  const handleAddSerie = (e) => {
-    if (serieYaAgregada(e.target.name, serieData)) {
-      return;
-    }
-    setmisSeries((prevState) => ({
-      ...prevState,
-      [e.target.name]: [...prevState[e.target.name], serieData],
-    }));
-    toast({
-      title: `Serie agregada a ${e.target.title}`,
-      status: "success",
-      duration: 1000,
-    });
-  };
-
-  const handleRemoveSerie = (e) => {
-    setmisSeries((prevState) => ({
-      ...prevState,
-      [e.target.name]: [
-        ...prevState[e.target.name].filter(
-          (serie) => serie.id !== serieData.id
-        ),
-      ],
-    }));
-    toast({
-      title: `Serie eliminada de ${e.target.title}`,
-      status: "info",
-      duration: 1000,
-    });
-  };
-
-  const serieYaAgregada = (target, data) => {
-    if (misSeries[target].find((serie) => serie.id === data.id)) {
-      return true;
-    }
-  };
 
   return (
     <>
@@ -130,59 +78,11 @@ const Serie = ({ misSeries, setmisSeries }) => {
                 <Text mt="2" as="p">
                   {serieData.overview}
                 </Text>
-                <Stack
-                  direction={{ base: "column", sm: "row" }}
-                  spacing={4}
-                  mt="3rem"
-                  fontSize={{ base: "md", md: "lg" }}
-                >
-                  <Button
-                    fontSize={{ base: "md", md: "lg" }}
-                    leftIcon={
-                      !serieYaAgregada("favoritas", serieData) ? (
-                        <MdFavoriteBorder />
-                      ) : (
-                        <MdFavorite />
-                      )
-                    }
-                    colorScheme="gray"
-                    variant="outline"
-                    name="favoritas"
-                    title="favoritos"
-                    onClick={
-                      !serieYaAgregada("favoritas", serieData)
-                        ? (e) => handleAddSerie(e)
-                        : (e) => handleRemoveSerie(e)
-                    }
-                  >
-                    {!serieYaAgregada("favoritas", serieData)
-                      ? "Agregar a favoritos"
-                      : "Eliminar de favoritos"}
-                  </Button>
-                  <Button
-                    fontSize={{ base: "md", md: "lg" }}
-                    leftIcon={
-                      !serieYaAgregada("verMasTarde", serieData) ? (
-                        <MdBookmarkBorder />
-                      ) : (
-                        <MdBookmark />
-                      )
-                    }
-                    colorScheme="gray"
-                    variant="outline"
-                    name="verMasTarde"
-                    title="ver más tarde"
-                    onClick={
-                      !serieYaAgregada("verMasTarde", serieData)
-                        ? (e) => handleAddSerie(e)
-                        : (e) => handleRemoveSerie(e)
-                    }
-                  >
-                    {!serieYaAgregada("verMasTarde", serieData)
-                      ? "Agregar a ver más tarde"
-                      : "Eliminar de ver más tarde"}
-                  </Button>
-                </Stack>
+                <SerieButtons
+                  misSeries={misSeries}
+                  setmisSeries={setmisSeries}
+                  serieData={serieData}
+                />
               </Flex>
             </Flex>
           </Flex>
